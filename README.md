@@ -4,6 +4,7 @@ SDIPen Manual
 2. MyDoc.h에서 CObArray m_oa; 멤버변수 추가
 3. 클래스뷰에서 SDIPen(솔루션이름)에 우클릭->추가->클래스 클래스 이름 CLine 기본 클래스 CObject -> 확인
 4. 클래스뷰에서 CLine.h에 들어가
+```c++
 class CLine :
 	public CObject
 {
@@ -27,8 +28,9 @@ public:
 		pDC->LineTo(m_To);
 	}
 	virtual void Serialize(CArchive& ar);
-}; //작성
+};``` //작성
 5. CLine.cpp에 들어가
+```c++
 #include "pch.h"
 #include "CLine.h"
 
@@ -44,15 +46,18 @@ void CLine::Serialize(CArchive& ar)
 	{	// loading code
 		ar >> m_From >> m_To >> m_Size >> m_Col;
 	}
-} //작성
+} ```//작성
+
 5. 클래스뷰에서 CSDIPen(솔루션이름)View 클릭 -> 속성 -> 네번째 탭(메시지) -> WM_MOUSEMOVE를 선택하고 OnMouseMove 활성화
 6. SDIPen(솔루션이름)View.cpp에 #include "CLine.h" 헤더파일 추가
 7. SDIPen(솔루션이름)View.h에 
+```c++
 CSDIPenDoc* GetDocument() const;
 	CPoint pnt;
 	int size;
-	COLORREF col; // 멤버추가
+	COLORREF col; // ``` 멤버추가
 8. CSDIPenView()에 
+```c++
 size = 32;
 col = RGB(0,255,0); // 작성 기본크기와 색상
 9. OnMouseMove(UNIT nFlags, CPoint point)에
@@ -62,7 +67,7 @@ if (nFlags == MK_LBUTTON) {
 		Invalidate(false);
 	}
 	pnt = point;
-	CView::OnMouseMove(nFlags, point); // 작성
+	CView::OnMouseMove(nFlags, point); // ```작성
   10. 리소스뷰에서 Menu -> IDR_MAINFRAME 더블클릭 도움말 옆에 Menu 입력
   Menu -> col , size 작성 - > size -> 1, 16 , 32 입력
   11 col 우클릭 이벤트 처리기 추가 -> CAboutDlg를 CSDIPen(솔루션이름)View로 변경 -> 확인
