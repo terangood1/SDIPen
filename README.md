@@ -4,6 +4,7 @@ SDIPen Manual
 2. MyDoc.h에서 CObArray m_oa; 멤버변수 추가
 3. 클래스뷰에서 SDIPen(솔루션이름)에 우클릭->추가->클래스 클래스 이름 CLine 기본 클래스 CObject -> 확인
 4. 클래스뷰에서 CLine.h에 들어가
+```c++
 class CLine :
 	public CObject
 {
@@ -28,7 +29,9 @@ public:
 	}
 	virtual void Serialize(CArchive& ar);
 }; //작성
-5. CLine.cpp에 들어가
+
+
+ 5. CLine.cpp에 들어가
 #include "pch.h"
 #include "CLine.h"
 
@@ -45,6 +48,7 @@ void CLine::Serialize(CArchive& ar)
 		ar >> m_From >> m_To >> m_Size >> m_Col;
 	}
 } //작성
+
 5. 클래스뷰에서 CSDIPen(솔루션이름)View 클릭 -> 속성 -> 네번째 탭(메시지) -> WM_MOUSEMOVE를 선택하고 OnMouseMove 활성화
 6. SDIPen(솔루션이름)View.cpp에 #include "CLine.h" 헤더파일 추가
 7. SDIPen(솔루션이름)View.h에 
